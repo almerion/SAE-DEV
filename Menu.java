@@ -2,25 +2,23 @@ import java.util.Scanner;
 
 public class Menu {
     public void mouvement(char[][] t,int [] coordonnées){
-        String direction;
+        char direction;
 
-            Scanner sc=new Scanner(System.in);
+        Scanner sc=new Scanner(System.in);
 
-            direction = sc.nextLine();
+        direction = sc.nextLine().charAt(0);
 
-            System.out.println();
+        System.out.println();
 
-            while (direction!="z" || direction!="q" || direction!="s" || direction!="d");{
+        while (direction != 'z' || direction != 'q' || direction != 's' || direction != 'd');{
 
-                direction = sc.nextLine();
+            direction = sc.nextLine().charAt(0);
 
-                System.out.println("Mauvais commande choisi il faut tapez z pour monter, q pour aller à gauche, s pour descendre, d pour aller à droite");
+            System.out.println("Mauvais commande choisi il faut tapez z pour monter, q pour aller à gauche, s pour descendre, d pour aller à droite");
+        }
+        if(direction == "z"|| direction=="Z"){
+            if(t[coordonnées[0]][coordonnées[1]+1]=='r') {
             }
-
-            if(direction == "z"|| direction=="Z"){
-                if(t[coordonnées[0]][coordonnées[1]+1]=='r'){
-
-                }
                 if(t[coordonnées[0]][coordonnées[1]+1]=='m'){//max à faire (taille maximum de largeur)
                     System.out.println("impossible de montez");
                 }
