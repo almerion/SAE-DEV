@@ -15,8 +15,9 @@ public class MéthodePrincipale {
 
     public static void ChercherPerso(char[][] niveau, int[] coordonnees){
         boolean trouve = false;
-        int ligne =0 , colonne = 0;
+        int ligne =0 , colonne;
         while (ligne < niveau.length && !trouve){
+            colonne =0;
             while (colonne < niveau[ligne].length && !trouve){
                 if (niveau[ligne][colonne] == 'P'){
                     coordonnees[0] = ligne;
@@ -24,7 +25,9 @@ public class MéthodePrincipale {
                     trouve = true;
 
                 }
+                colonne++;
             }
+            ligne++;
         }
     }
 
