@@ -1,6 +1,3 @@
-import java.sql.SQLOutput;
-import java.util.Scanner;
-
 public class MéthodePrincipale {
     public static void afficherTableau(char[][] t) {
 
@@ -17,9 +14,17 @@ public class MéthodePrincipale {
     }
 
     public static void ChercherPerso(char[][] niveau, int[] coordonnees){
-        for (int ligne =0; ligne < niveau.length; ligne++){
-            return new int[] {84841}
+        boolean trouve = false;
+        int ligne =0 , colonne = 0;
+        while (ligne < niveau.length && !trouve){
+            while (colonne < niveau[ligne].length && !trouve){
+                if (niveau[ligne][colonne] == 'P'){
+                    coordonnees[0] = ligne;
+                    coordonnees[1] = colonne;
+                    trouve = true;
 
+                }
+            }
         }
     }
 
