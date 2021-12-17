@@ -60,33 +60,4 @@ public class MéthodePrincipale {
         }
     }
 
-
-    public static void Mouvement(char [] [] niveau , char direction, int[] coordonnees){
-        if(direction == 'q'|| direction=='Q'){
-            if(niveau[coordonnees[0]][coordonnees[1]+1]=='r') {
-            }
-            if(niveau[coordonnees[0]][coordonnees[1]+1]=='m'){//max à faire (taille maximum de largeur)
-                System.out.println("impossible de montez");
-            }
-            niveau[coordonnees[0]][coordonnees[1] -1] = niveau[coordonnees[0]][coordonnees[1]];
-            niveau[coordonnees[0]][coordonnees[1]] = '*';
-            coordonnees[1] -=1;
-        }
-        else if(direction == 'z'|| direction=='Z'){
-            niveau[coordonnees[0]-1][coordonnees[1]] = niveau[coordonnees[0]][coordonnees[1]];
-            niveau[coordonnees[0]][coordonnees[1]] = '*';
-            coordonnees[0] -=1;
-        }
-        else if (direction == 'd' || direction=='D'){
-            niveau[coordonnees[0]][coordonnees[1]+1] = niveau[coordonnees[0]][coordonnees[1]];
-            niveau[coordonnees[0]][coordonnees[1]] = '*';
-            coordonnees[1] +=1;
-        }
-        else if (direction == 's' || direction=='S'){
-            niveau[coordonnees[0]+1][coordonnees[1]] = niveau[coordonnees[0]][coordonnees[1]];
-            niveau[coordonnees[0]][coordonnees[1]] = '*';
-            coordonnees[0] +=1;
-        }
-    }
-
 }
