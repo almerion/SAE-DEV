@@ -31,28 +31,4 @@ public class MéthodePrincipale {
         }
     }
 
-
-    public static void Mouvement(char [] [] niveau , char direction, int[] coordonnees){
-        if(direction == 'q'|| direction=='Q'){
-            niveau[coordonnees[0]][coordonnees[1] -1] = niveau[coordonnees[0]][coordonnees[1]];
-            niveau[coordonnees[0]][coordonnees[1]] = '*';
-            coordonnees[1] -=1;
-        }
-        else if(direction == 'z'|| direction=='Z'){
-            niveau[coordonnees[0]-1][coordonnees[1]] = niveau[coordonnees[0]][coordonnees[1]];
-            niveau[coordonnees[0]][coordonnees[1]] = '*';
-            coordonnees[0] -=1;
-        }
-        else if (direction == 'd' || direction=='D'){
-            niveau[coordonnees[0]][coordonnees[1]+1] = niveau[coordonnees[0]][coordonnees[1]];
-            niveau[coordonnees[0]][coordonnees[1]] = '*';
-            coordonnees[1] +=1;
-        }
-        else if (direction == 's' || direction=='S'){
-            niveau[coordonnees[0]+1][coordonnees[1]] = niveau[coordonnees[0]][coordonnees[1]];
-            niveau[coordonnees[0]][coordonnees[1]] = '*';
-            coordonnees[0] +=1;
-        }
-    }
-
 }
