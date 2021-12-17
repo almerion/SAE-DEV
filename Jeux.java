@@ -14,5 +14,5 @@ public class Jeux {
         Menu.mouvement(t,coordonnees);
         MéthodePrincipale.afficherTableau(t);
     }
-    }
+    }/*hzeay*/
 }
