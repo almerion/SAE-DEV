@@ -1,4 +1,4 @@
-public class MéthodePrincipale {
+public class MethodePrincipale {
     public static void afficherTableau(char[][] t) {
 
 
@@ -31,6 +31,11 @@ public class MéthodePrincipale {
         }
     }
 
+
+    public static boolean PresenceObstacle (char [][] niveau, char direction , int[] coordonnees){
+        return ((direction == 'q' || direction == 'Q') && niveau[coordonnees[0]][coordonnees[1] - 1] != '*') || ((direction == 's' || direction == 'S') && niveau[coordonnees[0] + 1][coordonnees[1]] != '*') || ((direction == 'd' || direction == 'D') && niveau[coordonnees[0]][coordonnees[1] + 1] != '*') || ((direction == 'z' || direction == 'Z') && niveau[coordonnees[0] - 1][coordonnees[1]] != '*');
+
+    }
 
     public static void Mouvement(char [] [] niveau , char direction, int[] coordonnees){
         if(direction == 'q'|| direction=='Q'){

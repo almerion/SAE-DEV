@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Menu {
-    public static void mouvement(char[][] t,int [] coordonnées){
+    public static void mouvement(char[][] t,int [] coordonnees){
         char direction;
 
         Scanner sc=new Scanner(System.in);
@@ -12,12 +12,14 @@ public class Menu {
 
         while (direction != 'z' && direction != 'q' && direction != 's' && direction != 'd'&& direction != 'Z' && direction != 'Q' && direction != 'S' && direction != 'D'){
 
-            System.out.println("Mauvaise commande choisi il faut tapez z pour monter, q pour aller à gauche, s pour descendre, d pour aller à droite");
+            System.out.println("Mauvaise commande choisie, il faut tapez z pour monter, q pour aller à gauche, s pour descendre, d pour aller à droite");
 
             direction = sc.nextLine().charAt(0);
 
         }
-        MéthodePrincipale.Mouvement(t,direction,coordonnées);
+        if (MethodePrincipale.PresenceObstacle(t,direction,coordonnees))
+            System.out.println("kkk c'est good");
+        MethodePrincipale.Mouvement(t,direction,coordonnees);
 
 
     }
