@@ -17,9 +17,11 @@ public class Menu {
             direction = sc.nextLine().charAt(0);
 
         }
-        if (MethodePrincipale.PresenceObstacle(t,direction,coordonnees))
+        // Regarde si l'endroit ou le joueur veut se déplacer est vide (*) ou non
+        if (((direction == 'q' || direction == 'Q') && t[coordonnees[0]][coordonnees[1] - 1] != '*') || ((direction == 's' || direction == 'S') && t[coordonnees[0] + 1][coordonnees[1]] != '*') || ((direction == 'd' || direction == 'D') && t[coordonnees[0]][coordonnees[1] + 1] != '*') || ((direction == 'z' || direction == 'Z') && t[coordonnees[0] - 1][coordonnees[1]] != '*'))
             System.out.println("kkk c'est good");
-        MethodePrincipale.Mouvement(t,direction,coordonnees);
+        else
+            MethodePrincipale.Mouvement(t,direction,coordonnees);
 
 
     }
