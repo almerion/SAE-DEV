@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class Menu {
-    public static void mouvement(char[][] t,int [] coordonnees){
+    public static void mouvement(char[][] niveau,int [] coordonnees){
         char direction;
 
-        Scanner sc=new Scanner(System.in);
+        Scanner sc =new Scanner(System.in);
         do {
             direction = sc.nextLine().charAt(0);
 
@@ -18,12 +18,12 @@ public class Menu {
 
             }
             // Regarde si l'endroit ou le joueur veut se déplacer est vide (*) ou non
-            if (MethodePrincipale.PresenceObstacle(t,direction,coordonnees))
+            if (MethodePrincipale.PresenceObstacleOuBordure(niveau,direction,coordonnees))
                 System.out.println("pas possible de bouger à cet endroit");
         }
         // TODO : pas juste présence mais si caillou ou bordure et traiter les pierres à casser/déplacer
-        while (MethodePrincipale.PresenceObstacle(t,direction,coordonnees));
-        MethodePrincipale.Mouvement(t,direction,coordonnees);
+        while (MethodePrincipale.PresenceObstacleOuBordure(niveau,direction,coordonnees));
+        MethodePrincipale.Mouvement(niveau,direction,coordonnees);
 
 
     }
