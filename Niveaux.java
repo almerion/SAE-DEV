@@ -22,7 +22,7 @@ public class Niveaux {
                 }
                 coordonnees[0] = 4;
                 coordonnees[1] = 5;
-                tours = 100;
+                tours = 10;
                 break;
             default:
                 System.out.println("Bruh erreur zeubi le swich il a le sida ");

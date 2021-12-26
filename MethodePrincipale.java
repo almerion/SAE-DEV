@@ -66,4 +66,17 @@ public class MethodePrincipale {
         return (direction == 'q' || direction == 'Q') && niveau[coordonnees[0]][coordonnees[1] - 1] == 'V' || ((direction == 's' || direction == 'S') && niveau[coordonnees[0] + 1][coordonnees[1]] == 'V') || ((direction == 'd' || direction == 'D') && niveau[coordonnees[0]][coordonnees[1] + 1] == 'V') || ((direction == 'z' || direction == 'Z') && niveau[coordonnees[0] - 1][coordonnees[1]] == 'V');
     }
 
+
+    public static void CalculProchaineCase(char direction, int[] ProchaineCase){
+        if (direction == 'd' || direction == 'D')
+            ProchaineCase[1] += 1;
+        else if (direction == 'q' || direction == 'Q')
+            ProchaineCase[1] -= 1;
+        else if (direction == 'z' || direction == 'Z')
+            ProchaineCase[0] -= 1;
+        else
+            ProchaineCase[0] += 1;
+
+    }
+
 }

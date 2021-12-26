@@ -7,16 +7,18 @@ public class Menu {
         char direction = 'b';
         int numNiveau = 1;
         int tours;
-        boolean victoire = false;
+        boolean victoire;
         int[] ProchaineCase = new int[2];
         Scanner sc = new Scanner(System.in);
-        System.arraycopy(coordonnees,0,ProchaineCase,0,2);
 
 
         // TODO: ajouter dans le while un "&& numNiv < Le max num niv " quand tous les lvl seront faits
         while (direction != ' ') {
+
             tours = Niveaux.CopieNiveau(niveau,numNiveau,coordonnees);
+            victoire = false;
             while (tours > 0 && !victoire && direction != ' ') {
+
                 MethodePrincipale.afficherTableau(niveau);
                 System.out.println("Nombre de tours restants : " + tours);
                 do {
@@ -37,6 +39,10 @@ public class Menu {
                 }
 
                 while (MethodePrincipale.PresenceMurOuBordure(niveau, direction, coordonnees));
+
+                System.arraycopy(coordonnees,0,ProchaineCase,0,2);
+                MethodePrincipale.CalculProchaineCase(direction,ProchaineCase);
+
                 if (MethodePrincipale.VerifVictoire(niveau, direction, coordonnees)) {
                     System.out.println("GG je suppose");
                     victoire = true;
@@ -46,8 +52,10 @@ public class Menu {
                     MethodePrincipale.Mouvement(niveau, direction, coordonnees);
                 tours --;
             }
+            System.out.println("Bienvenue au niveau " + numNiveau);
 
 
         }
+        System.out.println("Au Revoir !");
     }
 }
