@@ -4,21 +4,29 @@ public class Niveaux {
             {'*','*','*','*','*','*','*','*','*','*'},
             {'*','*','*','*','*','*','*','*','*','*'},
             {'*','*','*','*','*','*','*','*','*','*'},
-            {'*','*','*','*','*','v','*','*','*','*'},
-            {'*','*','*','*','*','P','b','*','*','*'},
-            {'*','*','*','*','*','n','*','*','*','*'},
-            {'*','*','*','*','*','*','*','*','*','*'},
-            {'*','*','*','*','*','*','*','*','*','*'},
-            {'*','*','*','*','*','*','*','*','*','*'},
-            {'*','*','*','*','*','*','*','*','*','*'}
+            {'*','*','*','*','*','V','*','*','*','*'},
+            {'*','*','*','*','*','P','M','*','*','*'},
+            {'*','*','*','*','*','M','M','*','*','*'},
+            {'*','*','*','M','*','*','*','*','*','*'},
+            {'*','*','*','*','*','*','M','*','*','*'},
+            {'*','*','*','*','M','*','*','*','*','*'},
+            {'*','*','*','*','*','M','*','*','*','*'}
     } ;
 
-    public static void niveaux(char[][] tR){
-
-        for (int ligne = 0; ligne < niveau1.length; ligne++){
-            for (int colonne = 0; colonne< niveau1[ligne].length; colonne++){
-                tR[ligne][colonne] = niveau1[ligne][colonne];
-            }
+    public static int CopieNiveau(char[][] tR, int numNiveau, int[] coordonnees){
+        int tours = 0;
+        switch (numNiveau) {
+            case 1 :
+                for (int ligne = 0; ligne < niveau1.length; ligne++) {
+                    System.arraycopy(niveau1[ligne], 0, tR[ligne], 0, niveau1[ligne].length);
+                }
+                coordonnees[0] = 4;
+                coordonnees[1] = 5;
+                tours = 100;
+                break;
+            default:
+                System.out.println("Bruh erreur zeubi le swich il a le sida ");
         }
+        return tours;
     }
 }

@@ -3,10 +3,9 @@ public class Jeux {
 
 
         char[][] t = new char[10][10];
-        Niveaux.niveaux(t);
-        MethodePrincipale.afficherTableau(t);
         int[] coordonnees = {0, 0};
-        MethodePrincipale.ChercherPerso(t, coordonnees);
+        Niveaux.CopieNiveau(t,1, coordonnees);
+        MethodePrincipale.afficherTableau(t);
         System.out.println(coordonnees[0]);
         System.out.println(coordonnees[1]);
 
@@ -14,5 +13,6 @@ public class Jeux {
             Menu.mouvement(t, coordonnees);
             MethodePrincipale.afficherTableau(t);
         }
+        // TODO : while dans le while pour changer de niveau ( while tours > 0 while !victoire) et entre les deux victoire qui est reset et changement de niveau
     }
 }

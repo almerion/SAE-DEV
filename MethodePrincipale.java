@@ -13,27 +13,29 @@ public class MethodePrincipale {
         System.out.println();
     }
 
-    public static void ChercherPerso(char[][] niveau, int[] coordonnees){
-        boolean trouve = false;
-        int ligne =0 , colonne;
-        while (ligne < niveau.length && !trouve){
-            colonne =0;
-            while (colonne < niveau[ligne].length && !trouve){
-                if (niveau[ligne][colonne] == 'P'){
-                    coordonnees[0] = ligne;
-                    coordonnees[1] = colonne;
-                    trouve = true;
+    
+//    public static void ChercherPerso(char[][] niveau, int[] coordonnees){
+//        boolean trouve = false;
+//        int ligne =0 , colonne;
+//        while (ligne < niveau.length && !trouve){
+//            colonne =0;
+//            while (colonne < niveau[ligne].length && !trouve){
+//                if (niveau[ligne][colonne] == 'P'){
+//                    coordonnees[0] = ligne;
+//                    coordonnees[1] = colonne;
+//                    trouve = true;
+//
+//                }
+//                colonne++;
+//            }
+//            ligne++;
+//        }
+//    }
+//
 
-                }
-                colonne++;
-            }
-            ligne++;
-        }
-    }
 
-
-    public static boolean PresenceObstacleOuBordure (char [][] niveau, char direction , int[] coordonnees){
-        return ((direction == 'q' || direction == 'Q') && (coordonnees[1] - 1 == -1 || niveau[coordonnees[0]][coordonnees[1] - 1] != '*')) || ((direction == 's' || direction == 'S') && (coordonnees[0] + 1 == 10 || niveau[coordonnees[0] + 1][coordonnees[1]] != '*')) || ((direction == 'd' || direction == 'D') && (coordonnees[1] + 1 == 10 || niveau[coordonnees[0]][coordonnees[1] + 1] != '*')) || ((direction == 'z' || direction == 'Z') && (coordonnees[0] - 1 == -1 || niveau[coordonnees[0] - 1][coordonnees[1]] != '*'));
+    public static boolean PresenceMurOuBordure (char [][] niveau, char direction , int[] coordonnees){
+        return ((direction == 'q' || direction == 'Q') && (coordonnees[1] - 1 == -1 || niveau[coordonnees[0]][coordonnees[1] - 1] == 'M')) || ((direction == 's' || direction == 'S') && (coordonnees[0] + 1 == 10 || niveau[coordonnees[0] + 1][coordonnees[1]] == 'M')) || ((direction == 'd' || direction == 'D') && (coordonnees[1] + 1 == 10 || niveau[coordonnees[0]][coordonnees[1] + 1] == 'M')) || ((direction == 'z' || direction == 'Z') && (coordonnees[0] - 1 == -1 || niveau[coordonnees[0] - 1][coordonnees[1]] == 'M'));
 
     }
 
@@ -58,6 +60,10 @@ public class MethodePrincipale {
             niveau[coordonnees[0]][coordonnees[1]] = '*';
             coordonnees[0] +=1;
         }
+    }
+
+    public static boolean VerifVictoire(char [][] niveau, char direction, int[] coordonnees){
+        return (direction == 'q' || direction == 'Q') && niveau[coordonnees[0]][coordonnees[1] - 1] == 'V' || ((direction == 's' || direction == 'S') && niveau[coordonnees[0] + 1][coordonnees[1]] == 'V') || ((direction == 'd' || direction == 'D') && niveau[coordonnees[0]][coordonnees[1] + 1] == 'V') || ((direction == 'z' || direction == 'Z') && niveau[coordonnees[0] - 1][coordonnees[1]] == 'V');
     }
 
 }
