@@ -30,13 +30,3 @@ public class Niveaux {
         return tours;
     }
 }
-/*
-*
-*
-*
-*
-* edf,o
-*
-*
-*
-* */
