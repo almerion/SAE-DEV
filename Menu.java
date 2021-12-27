@@ -17,6 +17,8 @@ public class Menu {
 
             tours = Niveaux.CopieNiveau(niveau,numNiveau,coordonnees);
             victoire = false;
+            System.arraycopy(coordonnees,0,ProchaineCase,0,2);
+
             while (tours > 0 && !victoire && direction != ' ') {
 
                 MethodePrincipale.afficherTableau(niveau);
@@ -40,10 +42,10 @@ public class Menu {
 
                 while (MethodePrincipale.PresenceMurOuBordure(niveau, direction, coordonnees));
 
-                System.arraycopy(coordonnees,0,ProchaineCase,0,2);
+
                 MethodePrincipale.CalculProchaineCase(direction,ProchaineCase);
 
-                if (MethodePrincipale.VerifVictoire(niveau, direction, coordonnees)) {
+                if (niveau[ProchaineCase[0]][ProchaineCase[1]] == 'V') {
                     System.out.println("GG je suppose");
                     victoire = true;
                     numNiveau ++;
