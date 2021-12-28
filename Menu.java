@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Menu {
     public static void menu(){
         char[][] niveau = new char[10][10];
-        int[] coordonnees = new int[2];
+        int[] coordonneesJoueur = new int[2];
         char direction = 'b';
         int numNiveau = 1;
         int tours;
@@ -15,9 +15,9 @@ public class Menu {
         // TODO: ajouter dans le while un "&& numNiv < Le max num niv " quand tous les lvl seront faits
         while (direction != ' ') {
 
-            tours = Niveaux.CopieNiveau(niveau,numNiveau,coordonnees);
+            tours = Niveaux.MiseEnPlaceNiveau(niveau,numNiveau,coordonneesJoueur);
             victoire = false;
-            System.arraycopy(coordonnees,0,ProchaineCase,0,2);
+            System.arraycopy(coordonneesJoueur,0,ProchaineCase,0,2);
 
             while (tours > 0 && !victoire && direction != ' ') {
 
@@ -36,11 +36,11 @@ public class Menu {
 
                     }
                     // Regarde si l'endroit ou le joueur veut se déplacer est bloqué par un mur/ par la bordure ou non
-                    if (MethodePrincipale.PresenceMurOuBordure(niveau, direction, coordonnees))
+                    if (MethodePrincipale.PresenceMurOuBordure(niveau, direction, coordonneesJoueur))
                         System.out.println("pas possible de bouger à cet endroit");
                 }
 
-                while (MethodePrincipale.PresenceMurOuBordure(niveau, direction, coordonnees));
+                while (MethodePrincipale.PresenceMurOuBordure(niveau, direction, coordonneesJoueur));
 
 
                 MethodePrincipale.CalculProchaineCase(direction,ProchaineCase);
@@ -51,7 +51,7 @@ public class Menu {
                     numNiveau ++;
                 }
                 else
-                    MethodePrincipale.Mouvement(niveau, direction, coordonnees);
+                    MethodePrincipale.Mouvement(niveau, direction, coordonneesJoueur);
                 tours --;
             }
             System.out.println("Bienvenue au niveau " + numNiveau);

@@ -34,31 +34,31 @@ public class MethodePrincipale {
 //
 
 
-    public static boolean PresenceMurOuBordure (char [][] niveau, char direction , int[] coordonnees){
-        return ((direction == 'q' || direction == 'Q') && (coordonnees[1] - 1 == -1 || niveau[coordonnees[0]][coordonnees[1] - 1] == 'M')) || ((direction == 's' || direction == 'S') && (coordonnees[0] + 1 == 10 || niveau[coordonnees[0] + 1][coordonnees[1]] == 'M')) || ((direction == 'd' || direction == 'D') && (coordonnees[1] + 1 == 10 || niveau[coordonnees[0]][coordonnees[1] + 1] == 'M')) || ((direction == 'z' || direction == 'Z') && (coordonnees[0] - 1 == -1 || niveau[coordonnees[0] - 1][coordonnees[1]] == 'M'));
+    public static boolean PresenceMurOuBordure (char [][] niveau, char direction , int[] coordonneesJoueur){
+        return ((direction == 'q' || direction == 'Q') && (coordonneesJoueur[1] - 1 == -1 || niveau[coordonneesJoueur[0]][coordonneesJoueur[1] - 1] == 'M')) || ((direction == 's' || direction == 'S') && (coordonneesJoueur[0] + 1 == 10 || niveau[coordonneesJoueur[0] + 1][coordonneesJoueur[1]] == 'M')) || ((direction == 'd' || direction == 'D') && (coordonneesJoueur[1] + 1 == 10 || niveau[coordonneesJoueur[0]][coordonneesJoueur[1] + 1] == 'M')) || ((direction == 'z' || direction == 'Z') && (coordonneesJoueur[0] - 1 == -1 || niveau[coordonneesJoueur[0] - 1][coordonneesJoueur[1]] == 'M'));
 
     }
 
-    public static void Mouvement(char [] [] niveau , char direction, int[] coordonnees){
+    public static void Mouvement(char [] [] niveau , char direction, int[] coordonneesJoueur){
         if(direction == 'q'|| direction=='Q'){
-            niveau[coordonnees[0]][coordonnees[1] -1] = niveau[coordonnees[0]][coordonnees[1]];
-            niveau[coordonnees[0]][coordonnees[1]] = '*';
-            coordonnees[1] -=1;
+            niveau[coordonneesJoueur[0]][coordonneesJoueur[1] -1] = niveau[coordonneesJoueur[0]][coordonneesJoueur[1]];
+            niveau[coordonneesJoueur[0]][coordonneesJoueur[1]] = '*';
+            coordonneesJoueur[1] -=1;
         }
         else if(direction == 'z'|| direction=='Z'){
-            niveau[coordonnees[0]-1][coordonnees[1]] = niveau[coordonnees[0]][coordonnees[1]];
-            niveau[coordonnees[0]][coordonnees[1]] = '*';
-            coordonnees[0] -=1;
+            niveau[coordonneesJoueur[0]-1][coordonneesJoueur[1]] = niveau[coordonneesJoueur[0]][coordonneesJoueur[1]];
+            niveau[coordonneesJoueur[0]][coordonneesJoueur[1]] = '*';
+            coordonneesJoueur[0] -=1;
         }
         else if (direction == 'd' || direction=='D'){
-            niveau[coordonnees[0]][coordonnees[1]+1] = niveau[coordonnees[0]][coordonnees[1]];
-            niveau[coordonnees[0]][coordonnees[1]] = '*';
-            coordonnees[1] +=1;
+            niveau[coordonneesJoueur[0]][coordonneesJoueur[1]+1] = niveau[coordonneesJoueur[0]][coordonneesJoueur[1]];
+            niveau[coordonneesJoueur[0]][coordonneesJoueur[1]] = '*';
+            coordonneesJoueur[1] +=1;
         }
         else if (direction == 's' || direction=='S'){
-            niveau[coordonnees[0]+1][coordonnees[1]] = niveau[coordonnees[0]][coordonnees[1]];
-            niveau[coordonnees[0]][coordonnees[1]] = '*';
-            coordonnees[0] +=1;
+            niveau[coordonneesJoueur[0]+1][coordonneesJoueur[1]] = niveau[coordonneesJoueur[0]][coordonneesJoueur[1]];
+            niveau[coordonneesJoueur[0]][coordonneesJoueur[1]] = '*';
+            coordonneesJoueur[0] +=1;
         }
     }
 
