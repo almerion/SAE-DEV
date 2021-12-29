@@ -36,11 +36,12 @@ public class Menu {
 
                     }
                     // Regarde si l'endroit ou le joueur veut se déplacer est bloqué par un mur/ par la bordure ou non
-                    if (MethodePrincipale.PresenceMurOuBordure(niveau, direction, coordonneesJoueur))
+                    if (MethodePrincipale.PresenceMurOuBordure(niveau, direction, coordonneesJoueur)||MethodePrincipale.PresenceRocher(niveau, direction, coordonneesJoueur))
                         System.out.println("pas possible de bouger à cet endroit");
+
                 }
 
-                while (MethodePrincipale.PresenceMurOuBordure(niveau, direction, coordonneesJoueur));
+                while (MethodePrincipale.PresenceMurOuBordure(niveau, direction, coordonneesJoueur)||MethodePrincipale.PresenceRocher(niveau, direction, coordonneesJoueur));
 
 
                 MethodePrincipale.CalculProchaineCase(direction,ProchaineCase);
@@ -49,6 +50,10 @@ public class Menu {
                     System.out.println("GG je suppose");
                     victoire = true;
                     numNiveau ++;
+                }
+                else if (niveau[ProchaineCase[0]][ProchaineCase[1]]=='R') {
+                    MethodePrincipale.MouvementRocher(niveau, direction, ProchaineCase);
+                    System.arraycopy(coordonneesJoueur,0,ProchaineCase,0,2);
                 }
                 else
                     MethodePrincipale.Mouvement(niveau, direction, coordonneesJoueur);
