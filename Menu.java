@@ -8,6 +8,8 @@ public class Menu {
         int numNiveau = 1;
         int tours;
         boolean victoire;
+        int[] coordonneesPic = new int[2];
+        boolean picPresent = false;
         int[] ProchaineCase = new int[2];
         Scanner sc = new Scanner(System.in);
 
@@ -22,6 +24,8 @@ public class Menu {
             while (tours > 0 && !victoire && direction != ' ') {
 
                 MethodePrincipale.afficherTableau(niveau);
+                if(picPresent)
+                    System.out.println("OOooooof");
                 System.out.println("Nombre de tours restants : " + tours);
                 do {
                     direction = sc.nextLine().charAt(0);
@@ -36,8 +40,10 @@ public class Menu {
 
                     }
                     // Regarde si l'endroit ou le joueur veut se déplacer est bloqué par un mur/ par la bordure ou non
-                    if (MethodePrincipale.PresenceMurOuBordure(niveau, direction, coordonneesJoueur)||MethodePrincipale.PresenceRocher(niveau, direction, coordonneesJoueur))
-                        System.out.println("pas possible de bouger à cet endroit");
+                    if (MethodePrincipale.PresenceMurOuBordure(niveau, direction, coordonneesJoueur)||MethodePrincipale.PresenceRocher(niveau, direction, coordonneesJoueur)) {
+                        System.out.println("action impossible !");
+                        MethodePrincipale.afficherTableau(niveau);
+                    }
 
                 }
 
@@ -45,6 +51,8 @@ public class Menu {
 
 
                 MethodePrincipale.CalculProchaineCase(direction,ProchaineCase);
+
+
 
                 if (niveau[ProchaineCase[0]][ProchaineCase[1]] == 'V') {
                     System.out.println("GG je suppose");
@@ -55,8 +63,26 @@ public class Menu {
                     MethodePrincipale.MouvementRocher(niveau, direction, ProchaineCase);
                     System.arraycopy(coordonneesJoueur,0,ProchaineCase,0,2);
                 }
-                else
+                else if (niveau[ProchaineCase[0]][ProchaineCase[1]]=='^'){
+                    tours --;
                     MethodePrincipale.Mouvement(niveau, direction, coordonneesJoueur);
+                    if(picPresent){
+                        niveau[coordonneesPic[0]][coordonneesPic[1]]='^';
+                        picPresent=false;
+                    }
+                    System.arraycopy(coordonneesJoueur,0,coordonneesPic,0,2);
+                    picPresent =true;
+
+                }
+                else {
+                    MethodePrincipale.Mouvement(niveau, direction, coordonneesJoueur);
+                    if(picPresent){
+                        niveau[coordonneesPic[0]][coordonneesPic[1]]='^';
+                        picPresent=false;
+                    }
+                }
+
+
                 tours --;
             }
             System.out.println("Bienvenue au niveau " + numNiveau);

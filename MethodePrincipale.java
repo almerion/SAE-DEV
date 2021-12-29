@@ -39,16 +39,16 @@ public class MethodePrincipale {
     }
     public static boolean PresenceRocher (char [][] niveau, char direction , int[] coordonneesJoueur){
         if ((direction == 'q' || direction == 'Q') && niveau[coordonneesJoueur[0]][coordonneesJoueur[1] - 1] == 'R'){
-            return (coordonneesJoueur[1]-2 <0||niveau[coordonneesJoueur[0]][coordonneesJoueur[1] - 2] != '*');
+            return (coordonneesJoueur[1]-2 <0||niveau[coordonneesJoueur[0]][coordonneesJoueur[1] - 2] != '.');
         }
         else if((direction == 's' || direction == 'S') && niveau[coordonneesJoueur[0] + 1][coordonneesJoueur[1]] == 'R'){
-            return (coordonneesJoueur[0]+2 >9||niveau[coordonneesJoueur[0] + 2][coordonneesJoueur[1]] != '*');
+            return (coordonneesJoueur[0]+2 >9||niveau[coordonneesJoueur[0] + 2][coordonneesJoueur[1]] != '.');
         }
         else if((direction == 'd' || direction ==  'D') && niveau[coordonneesJoueur[0]][coordonneesJoueur[1] + 1] == 'R'){
-            return (coordonneesJoueur[1]+2 >9||niveau[coordonneesJoueur[0]][coordonneesJoueur[1] + 2] != '*');
+            return (coordonneesJoueur[1]+2 >9||niveau[coordonneesJoueur[0]][coordonneesJoueur[1] + 2] != '.');
         }
         else if((direction == 'z' || direction == 'Z') &&  niveau[coordonneesJoueur[0] - 1][coordonneesJoueur[1]] == 'R'){
-            return (coordonneesJoueur[0]-2<0||niveau[coordonneesJoueur[0] - 2][coordonneesJoueur[1]] != '*');
+            return (coordonneesJoueur[0]-2<0||niveau[coordonneesJoueur[0] - 2][coordonneesJoueur[1]] != '.');
 
         }
         else{
@@ -58,27 +58,27 @@ public class MethodePrincipale {
     public static void Mouvement(char [] [] niveau , char direction, int[] coordonneesJoueur){
         if(direction == 'q'|| direction=='Q'){
             niveau[coordonneesJoueur[0]][coordonneesJoueur[1] -1] = niveau[coordonneesJoueur[0]][coordonneesJoueur[1]];
-            niveau[coordonneesJoueur[0]][coordonneesJoueur[1]] = '*';
+            niveau[coordonneesJoueur[0]][coordonneesJoueur[1]] = '.';
             coordonneesJoueur[1] -=1;
         }
         else if(direction == 'z'|| direction=='Z'){
             niveau[coordonneesJoueur[0]-1][coordonneesJoueur[1]] = niveau[coordonneesJoueur[0]][coordonneesJoueur[1]];
-            niveau[coordonneesJoueur[0]][coordonneesJoueur[1]] = '*';
+            niveau[coordonneesJoueur[0]][coordonneesJoueur[1]] = '.';
             coordonneesJoueur[0] -=1;
         }
         else if (direction == 'd' || direction=='D'){
             niveau[coordonneesJoueur[0]][coordonneesJoueur[1]+1] = niveau[coordonneesJoueur[0]][coordonneesJoueur[1]];
-            niveau[coordonneesJoueur[0]][coordonneesJoueur[1]] = '*';
+            niveau[coordonneesJoueur[0]][coordonneesJoueur[1]] = '.';
             coordonneesJoueur[1] +=1;
         }
         else if (direction == 's' || direction=='S'){
             niveau[coordonneesJoueur[0]+1][coordonneesJoueur[1]] = niveau[coordonneesJoueur[0]][coordonneesJoueur[1]];
-            niveau[coordonneesJoueur[0]][coordonneesJoueur[1]] = '*';
+            niveau[coordonneesJoueur[0]][coordonneesJoueur[1]] = '.';
             coordonneesJoueur[0] +=1;
         }
     }
     public static void MouvementRocher(char [] [] niveau , char direction, int[] ProchaineCase){
-        niveau[ProchaineCase[0]][ProchaineCase[1]]='*';
+        niveau[ProchaineCase[0]][ProchaineCase[1]]='.';
         CalculProchaineCase(direction,ProchaineCase);
         niveau[ProchaineCase[0]][ProchaineCase[1]]='R';
     }
@@ -101,5 +101,6 @@ public class MethodePrincipale {
             ProchaineCase[0] += 1;
 
     }
+
 
 }
