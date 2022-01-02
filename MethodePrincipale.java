@@ -71,7 +71,7 @@ public class MethodePrincipale {
             niveau[coordonneesJoueur[0]][coordonneesJoueur[1]] = '.';
             coordonneesJoueur[1] +=1;
         }
-        else if (direction == 's' || direction=='S'){
+        else{
             niveau[coordonneesJoueur[0]+1][coordonneesJoueur[1]] = niveau[coordonneesJoueur[0]][coordonneesJoueur[1]];
             niveau[coordonneesJoueur[0]][coordonneesJoueur[1]] = '.';
             coordonneesJoueur[0] +=1;

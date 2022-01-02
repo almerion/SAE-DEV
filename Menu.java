@@ -34,14 +34,14 @@ public class Menu {
 
                     while (direction != 'z' && direction != 'q' && direction != 's' && direction != 'd' && direction != 'Z' && direction != 'Q' && direction != 'S' && direction != 'D' && direction != ' ') {
 
-                        System.out.println("Mauvaise commande choisie, il faut tapez z pour monter, q pour aller à gauche, s pour descendre, d pour aller à droite");
+                        System.out.println("\u001B[31mMauvaise commande choisie, il faut tapez z pour monter, q pour aller à gauche, s pour descendre, d pour aller à droite \u001B[0m");
 
                         direction = sc.nextLine().charAt(0);
 
                     }
                     // Regarde si l'endroit ou le joueur veut se déplacer est bloqué par un mur/ par la bordure ou non
                     if (MethodePrincipale.PresenceMurOuBordure(niveau, direction, coordonneesJoueur)||MethodePrincipale.PresenceRocherNonDeplacable(niveau, direction, coordonneesJoueur)) {
-                        System.out.println("action impossible !");
+                        System.out.println("\u001B[31maction impossible ! \u001B[0m");
                         MethodePrincipale.afficherTableau(niveau);
                     }
 
@@ -82,10 +82,9 @@ public class Menu {
                     }
                 }
 
-
                 tours --;
             }
-            System.out.println("Bienvenue au niveau " + numNiveau);
+            System.out.println("\u001B[34mBienvenue au niveau " + numNiveau + "\u001B[0m");
 
 
         }
