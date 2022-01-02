@@ -129,17 +129,85 @@ public class TestMethodes {
         };
         int[] coordonneesTest6 = {1,0};
 
+        char [][] test7 = {
+                {'.','.','.'},
+                {'P','R','M'},
+                {'.','.','.'}
+        };
+        int[] coordonneesTest7 = {1,0};
+
+        char [][] test8 = {
+                {'.','P','.'},
+                {'.','R','.'},
+                {'.','M','.'}
+        };
+        int[] coordonneesTest8 = {0,1};
+
+        char [][] test9 = {
+                {'.','.','.'},
+                {'M','R','P'},
+                {'.','.','.'}
+        };
+        int[] coordonneesTest9 = {1,2};
+
+        char [][] test10 = {
+                {'.','M','.'},
+                {'.','R','.'},
+                {'.','P','.'}
+        };
+        int[] coordonneesTest10 = {2,1};
+
+        char [][] test11 = {
+                {'.','.','.'},
+                {'P','R','^'},
+                {'.','.','.'}
+        };
+        int[] coordonneesTest11 = {1,0};
+
+        char [][] test12 = {
+                {'.','P','.'},
+                {'.','R','.'},
+                {'.','^','.'}
+        };
+        int[] coordonneesTest12 = {0,1};
+
+        char [][] test13 = {
+                {'.','.','.'},
+                {'^','R','P'},
+                {'.','.','.'}
+        };
+        int[] coordonneesTest13 = {1,2};
+
+        char [][] test14 = {
+                {'.','^','.'},
+                {'.','R','.'},
+                {'.','P','.'}
+        };
+        int[] coordonneesTest14 = {2,1};
+
         // test sans rochers ('R')
         assertFalse(MethodePrincipale.PresenceRocherNonDeplacable(test1,'z',coordonneesTest1));
         assertFalse(MethodePrincipale.PresenceRocherNonDeplacable(test1,'s',coordonneesTest1));
         assertFalse(MethodePrincipale.PresenceRocherNonDeplacable(test1,'q',coordonneesTest1));
         assertFalse(MethodePrincipale.PresenceRocherNonDeplacable(test1,'d',coordonneesTest1));
 
-        // test avec rocher non déplaçable
+        // test avec rocher non déplaçable à cause de la bordure
         assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test2,'z',coordonneesTest2));
         assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test2,'s',coordonneesTest2));
         assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test2,'q',coordonneesTest2));
         assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test2,'d',coordonneesTest2));
+
+        // test avec rocher non déplaçable à cause d'un mur
+        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test7,'d',coordonneesTest7));
+        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test8,'s',coordonneesTest8));
+        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test9,'q',coordonneesTest9));
+        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test10,'z',coordonneesTest10));
+
+        // test avec rocher non déplaçable à cause de pics
+        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test11,'d',coordonneesTest11));
+        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test12,'s',coordonneesTest12));
+        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test13,'q',coordonneesTest13));
+        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test14,'z',coordonneesTest14));
 
         // test avec rocher déplaçable vers la gauche
         assertFalse(MethodePrincipale.PresenceRocherNonDeplacable(test3,'q',coordonneesTest3));
