@@ -35,20 +35,20 @@ public class MethodePrincipale {
 
 
     public static boolean PresenceMurOuBordure (char [][] niveau, char direction , int[] coordonneesJoueur){
-        return ((direction == 'q' || direction == 'Q') && (coordonneesJoueur[1] - 1 == -1 || niveau[coordonneesJoueur[0]][coordonneesJoueur[1] - 1] == 'M')) || ((direction == 's' || direction == 'S') && (coordonneesJoueur[0] + 1 == 10 || niveau[coordonneesJoueur[0] + 1][coordonneesJoueur[1]] == 'M')) || ((direction == 'd' || direction == 'D') && (coordonneesJoueur[1] + 1 == 10 || niveau[coordonneesJoueur[0]][coordonneesJoueur[1] + 1] == 'M')) || ((direction == 'z' || direction == 'Z') && (coordonneesJoueur[0] - 1 == -1 || niveau[coordonneesJoueur[0] - 1][coordonneesJoueur[1]] == 'M'));
+        return ((direction == 'q' || direction == 'Q') && (coordonneesJoueur[1] - 1 == -1 || niveau[coordonneesJoueur[0]][coordonneesJoueur[1] - 1] == 'M')) || ((direction == 's' || direction == 'S') && (coordonneesJoueur[0] + 1 == niveau.length || niveau[coordonneesJoueur[0] + 1][coordonneesJoueur[1]] == 'M')) || ((direction == 'd' || direction == 'D') && (coordonneesJoueur[1] + 1 == niveau.length || niveau[coordonneesJoueur[0]][coordonneesJoueur[1] + 1] == 'M')) || ((direction == 'z' || direction == 'Z') && (coordonneesJoueur[0] - 1 == -1 || niveau[coordonneesJoueur[0] - 1][coordonneesJoueur[1]] == 'M'));
     }
-    public static boolean PresenceRocher (char [][] niveau, char direction , int[] coordonneesJoueur){
+    public static boolean PresenceRocherNonDeplacable(char [][] niveau, char direction , int[] coordonneesJoueur){
         if ((direction == 'q' || direction == 'Q') && niveau[coordonneesJoueur[0]][coordonneesJoueur[1] - 1] == 'R'){
-            return (coordonneesJoueur[1]-2 <0||niveau[coordonneesJoueur[0]][coordonneesJoueur[1] - 2] != '.');
+            return (coordonneesJoueur[1]-2 < 0 || niveau[coordonneesJoueur[0]][coordonneesJoueur[1] - 2] != '.');
         }
         else if((direction == 's' || direction == 'S') && niveau[coordonneesJoueur[0] + 1][coordonneesJoueur[1]] == 'R'){
-            return (coordonneesJoueur[0]+2 >9||niveau[coordonneesJoueur[0] + 2][coordonneesJoueur[1]] != '.');
+            return (coordonneesJoueur[0]+2 > niveau.length-1||niveau[coordonneesJoueur[0] + 2][coordonneesJoueur[1]] != '.');
         }
         else if((direction == 'd' || direction ==  'D') && niveau[coordonneesJoueur[0]][coordonneesJoueur[1] + 1] == 'R'){
-            return (coordonneesJoueur[1]+2 >9||niveau[coordonneesJoueur[0]][coordonneesJoueur[1] + 2] != '.');
+            return (coordonneesJoueur[1]+2 > niveau.length-1 || niveau[coordonneesJoueur[0]][coordonneesJoueur[1] + 2] != '.');
         }
         else if((direction == 'z' || direction == 'Z') &&  niveau[coordonneesJoueur[0] - 1][coordonneesJoueur[1]] == 'R'){
-            return (coordonneesJoueur[0]-2<0||niveau[coordonneesJoueur[0] - 2][coordonneesJoueur[1]] != '.');
+            return (coordonneesJoueur[0]-2 < 0 || niveau[coordonneesJoueur[0] - 2][coordonneesJoueur[1]] != '.');
 
         }
         else{

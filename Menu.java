@@ -40,14 +40,14 @@ public class Menu {
 
                     }
                     // Regarde si l'endroit ou le joueur veut se déplacer est bloqué par un mur/ par la bordure ou non
-                    if (MethodePrincipale.PresenceMurOuBordure(niveau, direction, coordonneesJoueur)||MethodePrincipale.PresenceRocher(niveau, direction, coordonneesJoueur)) {
+                    if (MethodePrincipale.PresenceMurOuBordure(niveau, direction, coordonneesJoueur)||MethodePrincipale.PresenceRocherNonDeplacable(niveau, direction, coordonneesJoueur)) {
                         System.out.println("action impossible !");
                         MethodePrincipale.afficherTableau(niveau);
                     }
 
                 }
 
-                while (MethodePrincipale.PresenceMurOuBordure(niveau, direction, coordonneesJoueur)||MethodePrincipale.PresenceRocher(niveau, direction, coordonneesJoueur));
+                while (MethodePrincipale.PresenceMurOuBordure(niveau, direction, coordonneesJoueur)||MethodePrincipale.PresenceRocherNonDeplacable(niveau, direction, coordonneesJoueur));
 
 
                 MethodePrincipale.CalculProchaineCase(direction,ProchaineCase);
