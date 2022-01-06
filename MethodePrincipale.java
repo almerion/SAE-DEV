@@ -13,7 +13,7 @@ public class MethodePrincipale {
         System.out.println();
     }
 
-    
+
 //    public static void ChercherPerso(char[][] niveau, int[] coordonnees){
 //        boolean trouve = false;
 //        int ligne =0 , colonne;
@@ -37,6 +37,7 @@ public class MethodePrincipale {
     public static boolean PresenceMurOuBordure (char [][] niveau, char direction , int[] coordonneesJoueur){
         return ((direction == 'q' || direction == 'Q') && (coordonneesJoueur[1] - 1 == -1 || niveau[coordonneesJoueur[0]][coordonneesJoueur[1] - 1] == 'M')) || ((direction == 's' || direction == 'S') && (coordonneesJoueur[0] + 1 == niveau.length || niveau[coordonneesJoueur[0] + 1][coordonneesJoueur[1]] == 'M')) || ((direction == 'd' || direction == 'D') && (coordonneesJoueur[1] + 1 == niveau.length || niveau[coordonneesJoueur[0]][coordonneesJoueur[1] + 1] == 'M')) || ((direction == 'z' || direction == 'Z') && (coordonneesJoueur[0] - 1 == -1 || niveau[coordonneesJoueur[0] - 1][coordonneesJoueur[1]] == 'M'));
     }
+
     public static boolean PresenceRocherNonDeplacable(char [][] niveau, char direction , int[] coordonneesJoueur){
         if ((direction == 'q' || direction == 'Q') && niveau[coordonneesJoueur[0]][coordonneesJoueur[1] - 1] == 'R'){
             return (coordonneesJoueur[1]-2 < 0 || niveau[coordonneesJoueur[0]][coordonneesJoueur[1] - 2] != '.');
@@ -91,11 +92,11 @@ public class MethodePrincipale {
 
 
     public static void CalculProchaineCase(char direction, int[] ProchaineCase){
-        if (direction == 'd' || direction == 'D')
+        if (direction == 'd')
             ProchaineCase[1] += 1;
-        else if (direction == 'q' || direction == 'Q')
+        else if (direction == 'q')
             ProchaineCase[1] -= 1;
-        else if (direction == 'z' || direction == 'Z')
+        else if (direction == 'z')
             ProchaineCase[0] -= 1;
         else
             ProchaineCase[0] += 1;
