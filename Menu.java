@@ -26,12 +26,16 @@ public class Menu {
             while (tours > 0 && !victoire && direction != QUITTER) {
 
                 MethodePrincipale.afficherTableau(niveau);
-                if(picPresent)
-                    System.out.println("\u001B[31mOOooooof \u001B[33m(-1 tour)\u001B[0m");
                 System.out.println("Nombre de tours restants : " + tours);
                 do {
+
+                    if (MethodePrincipale.PresenceMurOuBordure(niveau,ProchaineCase)||MethodePrincipale.PresenceRocherNonDeplacable(niveau, direction, ProchaineCase)) {
+                        System.out.println("\u001B[31maction impossible ! \u001B[0m");
+                        System.arraycopy(coordonneesJoueur,0,ProchaineCase,0,2);
+                        MethodePrincipale.afficherTableau(niveau);
+                    }
+
                     direction = Character.toLowerCase(sc.nextLine().charAt(0));
-                    //TODO : ajouter le prochaine case
                     System.out.println();
 
                     while (direction != 'z' && direction != 'q' && direction != 's' && direction != 'd' && direction != QUITTER) {
@@ -41,18 +45,14 @@ public class Menu {
                         direction = Character.toLowerCase(sc.nextLine().charAt(0));
 
                     }
+                    MethodePrincipale.CalculProchaineCase(direction,ProchaineCase);
                     // Regarde si l'endroit ou le joueur veut se déplacer est bloqué par un mur/ par la bordure ou non
-                    if (MethodePrincipale.PresenceMurOuBordure(niveau, direction, coordonneesJoueur)||MethodePrincipale.PresenceRocherNonDeplacable(niveau, direction, coordonneesJoueur)) {
-                        System.out.println("\u001B[31maction impossible ! \u001B[0m");
-                        MethodePrincipale.afficherTableau(niveau);
-                    }
 
                 }
 
-                while (MethodePrincipale.PresenceMurOuBordure(niveau, direction, coordonneesJoueur)||MethodePrincipale.PresenceRocherNonDeplacable(niveau, direction, coordonneesJoueur));
+                while (MethodePrincipale.PresenceMurOuBordure(niveau,ProchaineCase) || MethodePrincipale.PresenceRocherNonDeplacable(niveau, direction, ProchaineCase));
 
 
-                MethodePrincipale.CalculProchaineCase(direction,ProchaineCase);
 
 
 
@@ -61,10 +61,12 @@ public class Menu {
                     victoire = true;
                     numNiveau ++;
                 }
+
                 else if (niveau[ProchaineCase[0]][ProchaineCase[1]]=='R') {
                     MethodePrincipale.MouvementRocher(niveau, direction, ProchaineCase);
                     System.arraycopy(coordonneesJoueur,0,ProchaineCase,0,2);
                 }
+
                 else if (niveau[ProchaineCase[0]][ProchaineCase[1]]=='^'){
                     tours --;
                     MethodePrincipale.Mouvement(niveau, direction, coordonneesJoueur);
@@ -74,8 +76,10 @@ public class Menu {
                     }
                     System.arraycopy(coordonneesJoueur,0,coordonneesPic,0,2);
                     picPresent =true;
+                    System.out.println("\u001B[31mOOooooof \u001B[33m(-1 tour)\u001B[0m");
 
                 }
+
                 else {
                     MethodePrincipale.Mouvement(niveau, direction, coordonneesJoueur);
                     if(picPresent){

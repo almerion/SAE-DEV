@@ -10,79 +10,45 @@ public class TestMethodes {
                 {'M','P','M'},
                 {'.','M','.'}
         };
-        int[] coordonneesTest1 = {1,1};
 
         char [][] test2 = {
                 {'M','.','M'},
                 {'.','P','.'},
                 {'M','.','M'}
         };
-        int[] coordonneesTest2 = {1,1};
 
         char [][] test3 = {
-                {'.','P','.'},
+                {'.','.','.'},
                 {'.','.','.'},
                 {'.','.','.'}
         };
-        int[] coordonneesTest3 = {0,1};
 
-        char [][] test4 = {
-                {'.','.','.'},
-                {'.','.','P'},
-                {'.','.','.'}
-        };
-        int[] coordonneesTest4 = {1,2};
-
-        char [][] test5 = {
-                {'.','.','.'},
-                {'.','.','.'},
-                {'.','P','.'}
-        };
-        int[] coordonneesTest5 = {2,1};
-
-        char [][] test6 = {
-                {'.', '.','.'},
-                {'P', '.','.'},
-                {'.', '.','.'}
-        };
-        int[] coordonneesTest6 = {1,0};
+        int[] ProchaineCaseHaut = {0,1};
+        int[] ProchaineCaseGauche = {1,0};
+        int[] ProchaineCaseDroite = {1,2};
+        int[] ProchaineCaseBas = {2,1};
+        int[] BordureHaut = {-1,0};
+        int[] BordureGauche = {0,-1};
+        int[] BordureDroite = {0,3};
+        int[] BordureBas = {3,0};
 
         // test sur les murs
-        assertTrue(MethodePrincipale.PresenceMurOuBordure(test1,'z',coordonneesTest1));
-        assertTrue(MethodePrincipale.PresenceMurOuBordure(test1,'s',coordonneesTest1));
-        assertTrue(MethodePrincipale.PresenceMurOuBordure(test1,'q',coordonneesTest1));
-        assertTrue(MethodePrincipale.PresenceMurOuBordure(test1,'d',coordonneesTest1));
+        assertTrue(MethodePrincipale.PresenceMurOuBordure(test1,ProchaineCaseHaut));
+        assertTrue(MethodePrincipale.PresenceMurOuBordure(test1,ProchaineCaseBas));
+        assertTrue(MethodePrincipale.PresenceMurOuBordure(test1,ProchaineCaseGauche));
+        assertTrue(MethodePrincipale.PresenceMurOuBordure(test1,ProchaineCaseDroite));
 
         // test déplacement normal
-        assertFalse(MethodePrincipale.PresenceMurOuBordure(test2,'z',coordonneesTest2));
-        assertFalse(MethodePrincipale.PresenceMurOuBordure(test2,'s',coordonneesTest2));
-        assertFalse(MethodePrincipale.PresenceMurOuBordure(test2,'q',coordonneesTest2));
-        assertFalse(MethodePrincipale.PresenceMurOuBordure(test2,'d',coordonneesTest2));
+        assertFalse(MethodePrincipale.PresenceMurOuBordure(test2,ProchaineCaseHaut));
+        assertFalse(MethodePrincipale.PresenceMurOuBordure(test2,ProchaineCaseBas));
+        assertFalse(MethodePrincipale.PresenceMurOuBordure(test2,ProchaineCaseGauche));
+        assertFalse(MethodePrincipale.PresenceMurOuBordure(test2,ProchaineCaseDroite));
 
-        // test déplacements sur bordure haut
-        assertTrue(MethodePrincipale.PresenceMurOuBordure(test3,'z',coordonneesTest3));
-        assertFalse(MethodePrincipale.PresenceMurOuBordure(test3,'s',coordonneesTest3));
-        assertFalse(MethodePrincipale.PresenceMurOuBordure(test3,'q',coordonneesTest3));
-        assertFalse(MethodePrincipale.PresenceMurOuBordure(test3,'d',coordonneesTest3));
-
-        // test déplacements sur bordure droite
-        assertFalse(MethodePrincipale.PresenceMurOuBordure(test4,'z',coordonneesTest4));
-        assertFalse(MethodePrincipale.PresenceMurOuBordure(test4,'s',coordonneesTest4));
-        assertFalse(MethodePrincipale.PresenceMurOuBordure(test4,'q',coordonneesTest4));
-        assertTrue(MethodePrincipale.PresenceMurOuBordure(test4,'d',coordonneesTest4));
-
-        // test déplacements sur bordure bas
-        assertFalse(MethodePrincipale.PresenceMurOuBordure(test5,'z',coordonneesTest5));
-        assertTrue(MethodePrincipale.PresenceMurOuBordure(test5,'s',coordonneesTest5));
-        assertFalse(MethodePrincipale.PresenceMurOuBordure(test5,'q',coordonneesTest5));
-        assertFalse(MethodePrincipale.PresenceMurOuBordure(test5,'d',coordonneesTest5));
-
-        // test déplacements sur bordure gauche
-        assertFalse(MethodePrincipale.PresenceMurOuBordure(test6,'z',coordonneesTest6));
-        assertFalse(MethodePrincipale.PresenceMurOuBordure(test6,'s',coordonneesTest6));
-        assertTrue(MethodePrincipale.PresenceMurOuBordure(test6,'q',coordonneesTest6));
-        assertFalse(MethodePrincipale.PresenceMurOuBordure(test6,'d',coordonneesTest6));
-
+        // test déplacements sur bordure
+        assertTrue(MethodePrincipale.PresenceMurOuBordure(test3,BordureBas));
+        assertTrue(MethodePrincipale.PresenceMurOuBordure(test3,BordureDroite));
+        assertTrue(MethodePrincipale.PresenceMurOuBordure(test3,BordureGauche));
+        assertTrue(MethodePrincipale.PresenceMurOuBordure(test3,BordureHaut));
     }
 
     @Test
@@ -92,131 +58,129 @@ public class TestMethodes {
                 {'.','P','.'},
                 {'.','.','.'}
         };
-        int[] coordonneesTest1 = {1,1};
 
         char [][] test2 = {
                 {'.','R','.'},
                 {'R','P','R'},
                 {'.','R','.'}
         };
-        int[] coordonneesTest2 = {1,1};
 
         char [][] test3 = {
                 {'.','.','.'},
                 {'.','R','P'},
                 {'.','.','.'}
         };
-        int[] coordonneesTest3 = {1,2};
 
         char [][] test4 = {
                 {'.','.','.'},
                 {'R','.','.'},
                 {'P','.','.'}
         };
-        int[] coordonneesTest4 = {2,0};
 
         char [][] test5 = {
                 {'P','.','.'},
                 {'R','.','.'},
                 {'.','.','.'}
         };
-        int[] coordonneesTest5 = {0,0};
 
         char [][] test6 = {
                 {'.','.','.'},
                 {'P','R','.'},
                 {'.','.','.'}
         };
-        int[] coordonneesTest6 = {1,0};
 
         char [][] test7 = {
                 {'.','.','.'},
                 {'P','R','M'},
                 {'.','.','.'}
         };
-        int[] coordonneesTest7 = {1,0};
 
         char [][] test8 = {
                 {'.','P','.'},
                 {'.','R','.'},
                 {'.','M','.'}
         };
-        int[] coordonneesTest8 = {0,1};
 
         char [][] test9 = {
                 {'.','.','.'},
                 {'M','R','P'},
                 {'.','.','.'}
         };
-        int[] coordonneesTest9 = {1,2};
 
         char [][] test10 = {
                 {'.','M','.'},
                 {'.','R','.'},
                 {'.','P','.'}
         };
-        int[] coordonneesTest10 = {2,1};
 
         char [][] test11 = {
                 {'.','.','.'},
                 {'P','R','^'},
                 {'.','.','.'}
         };
-        int[] coordonneesTest11 = {1,0};
 
         char [][] test12 = {
                 {'.','P','.'},
                 {'.','R','.'},
                 {'.','^','.'}
         };
-        int[] coordonneesTest12 = {0,1};
 
         char [][] test13 = {
                 {'.','.','.'},
                 {'^','R','P'},
                 {'.','.','.'}
         };
-        int[] coordonneesTest13 = {1,2};
 
         char [][] test14 = {
                 {'.','^','.'},
                 {'.','R','.'},
                 {'.','P','.'}
         };
-        int[] coordonneesTest14 = {2,1};
+
+
+
+        int[] ProchaineCaseHaut = {0,1};
+
+        int[] ProchaineCaseGauche = {1,0};
+        int[] ProchaineCaseMilieu = {1,1};
+        int[] ProchaineCaseDroite = {1,2};
+
+        int[] ProchaineCaseBas = {2,1};
+
+
+
 
         // test sans rochers ('R')
-        assertFalse(MethodePrincipale.PresenceRocherNonDeplacable(test1,'z',coordonneesTest1));
-        assertFalse(MethodePrincipale.PresenceRocherNonDeplacable(test1,'s',coordonneesTest1));
-        assertFalse(MethodePrincipale.PresenceRocherNonDeplacable(test1,'q',coordonneesTest1));
-        assertFalse(MethodePrincipale.PresenceRocherNonDeplacable(test1,'d',coordonneesTest1));
-
+        assertFalse(MethodePrincipale.PresenceRocherNonDeplacable(test1,'z',ProchaineCaseHaut));
+        assertFalse(MethodePrincipale.PresenceRocherNonDeplacable(test1,'s',ProchaineCaseBas));
+        assertFalse(MethodePrincipale.PresenceRocherNonDeplacable(test1,'q',ProchaineCaseGauche));
+        assertFalse(MethodePrincipale.PresenceRocherNonDeplacable(test1,'d',ProchaineCaseDroite));
         // test avec rocher non déplaçable à cause de la bordure
-        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test2,'z',coordonneesTest2));
-        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test2,'s',coordonneesTest2));
-        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test2,'q',coordonneesTest2));
-        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test2,'d',coordonneesTest2));
+        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test2,'z',ProchaineCaseHaut));
+        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test2,'s',ProchaineCaseBas));
+        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test2,'q',ProchaineCaseGauche));
+        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test2,'d',ProchaineCaseDroite));
 
         // test avec rocher non déplaçable à cause d'un mur
-        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test7,'d',coordonneesTest7));
-        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test8,'s',coordonneesTest8));
-        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test9,'q',coordonneesTest9));
-        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test10,'z',coordonneesTest10));
+        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test7,'d',ProchaineCaseMilieu));
+        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test8,'s',ProchaineCaseMilieu));
+        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test9,'q',ProchaineCaseMilieu));
+        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test10,'z',ProchaineCaseMilieu));
 
         // test avec rocher non déplaçable à cause de pics
-        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test11,'d',coordonneesTest11));
-        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test12,'s',coordonneesTest12));
-        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test13,'q',coordonneesTest13));
-        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test14,'z',coordonneesTest14));
+        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test11,'d',ProchaineCaseMilieu));
+        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test12,'s',ProchaineCaseMilieu));
+        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test13,'q',ProchaineCaseMilieu));
+        assertTrue(MethodePrincipale.PresenceRocherNonDeplacable(test14,'z',ProchaineCaseMilieu));
 
         // test avec rocher déplaçable vers la gauche
-        assertFalse(MethodePrincipale.PresenceRocherNonDeplacable(test3,'q',coordonneesTest3));
+        assertFalse(MethodePrincipale.PresenceRocherNonDeplacable(test3,'q',ProchaineCaseMilieu));
         // test avec rocher déplaçable vers le haut
-        assertFalse(MethodePrincipale.PresenceRocherNonDeplacable(test4,'z',coordonneesTest4));
+        assertFalse(MethodePrincipale.PresenceRocherNonDeplacable(test4,'z',ProchaineCaseMilieu));
         // test avec rocher déplaçable vers le bas
-        assertFalse(MethodePrincipale.PresenceRocherNonDeplacable(test5,'s',coordonneesTest5));
+        assertFalse(MethodePrincipale.PresenceRocherNonDeplacable(test5,'s',ProchaineCaseMilieu));
         // test avec rocher déplaçable vers la droite
-        assertFalse(MethodePrincipale.PresenceRocherNonDeplacable(test6,'d',coordonneesTest6));
+        assertFalse(MethodePrincipale.PresenceRocherNonDeplacable(test6,'d',ProchaineCaseMilieu));
     }
 
     @Test
