@@ -34,7 +34,7 @@ public class Menu {
                         System.arraycopy(coordonneesJoueur,0,ProchaineCase,0,2);
                         MethodePrincipale.afficherTableau(niveau);
                     }
-
+                    //TODO : passer direction en simple char je pense (sera plus simple + pas d'erreur quand il est vide)
                     direction = Character.toLowerCase(sc.nextLine().charAt(0));
                     System.out.println();
 
