@@ -102,7 +102,7 @@ public class MethodePrincipale {
         niveau[ProchaineCase[0]][ProchaineCase[1]]='R';
     }
 
-//  Variable ProchaineCase permet d'éviter ça et les autres cas qui se ressamblent
+//  Variable ProchaineCase permet d'éviter ça et les autres cas qui se ressemblent
 
 //    public static boolean VerifVictoire(char [][] niveau, char direction, int[] coordonnees){
 //        return (direction == 'q' || direction == 'Q') && niveau[coordonnees[0]][coordonnees[1] - 1] == 'V' || ((direction == 's' || direction == 'S') && niveau[coordonnees[0] + 1][coordonnees[1]] == 'V') || ((direction == 'd' || direction == 'D') && niveau[coordonnees[0]][coordonnees[1] + 1] == 'V') || ((direction == 'z' || direction == 'Z') && niveau[coordonnees[0] - 1][coordonnees[1]] == 'V');
