@@ -4,12 +4,14 @@ public class Menu {
 
     private final static char QUITTER = ' ';
     public static void menu(){
+        boolean perdre=false;
         char[][] niveau = new char[10][10];
         int[] coordonneesJoueur = new int[2];
         char direction = 'b';
         int numNiveau = 1;
         int tours;
         boolean victoire;
+        int[] garde=new int[4];
         int[] coordonneesPic = new int[2];
         boolean picPresent = false;
         int[] ProchaineCase = new int[2];
@@ -19,11 +21,11 @@ public class Menu {
         // TODO: ajouter dans le while un "&& numNiv < Le max num niv " quand tous les lvl seront faits
         while (direction != QUITTER) {
 
-            tours = Niveaux.MiseEnPlaceNiveau(niveau,numNiveau,coordonneesJoueur);
+            tours = Niveaux.MiseEnPlaceNiveau(niveau,numNiveau,coordonneesJoueur,garde);
             victoire = false;
             System.arraycopy(coordonneesJoueur,0,ProchaineCase,0,2);
 
-            while (tours > 0 && !victoire && direction != QUITTER) {
+            while (tours > 0 && !victoire && direction != QUITTER && !perdre) {
 
                 MethodePrincipale.afficherTableau(niveau);
                 System.out.println("Nombre de tours restants : " + tours);
@@ -86,6 +88,10 @@ public class Menu {
                         niveau[coordonneesPic[0]][coordonneesPic[1]]='^';
                         picPresent=false;
                     }
+                }
+
+                if(Niveaux.PresenceGarde(numNiveau)){
+                    MethodePrincipale.DeplacementGarde(niveau,garde);
                 }
 
                 tours --;

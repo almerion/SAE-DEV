@@ -81,6 +81,33 @@ public class MethodePrincipale {
         }
     }
 
+    public static boolean DeplacementGarde(char[][]niveau, int[] garde){//on aurait pu utiliser prochaine case mais pas fait pcq non
+        int[] prochaineCase=new int[2];
+        prochaineCase[0]=garde[0]+garde[2];
+        prochaineCase[1]=garde[1]+garde[3];
+        if(PresenceMurOuBordure(niveau,prochaineCase)){
+            if(garde[2]==-1)
+                garde[2]=1;
+            else if(garde[3]==-1)
+                garde[3]=1;
+            else if(garde[2]==1)
+                garde[2]=-1;
+            else if(garde[3]==1)
+                garde[3]=-1;
+
+        }
+
+        else {
+            niveau[prochaineCase[0]][prochaineCase[1]] = 'G';
+            niveau[garde[0]][garde[1]] = '.';
+            garde[0] += garde[2];
+            garde[1] += garde[3];
+        }
+        if(niveau[prochaineCase[0]][prochaineCase[1]]=='P') {
+            return true;
+        }
+        return false;
+    }
 
     public static void MouvementRocher(char [] [] niveau , char direction, int[] ProchaineCase){
         niveau[ProchaineCase[0]][ProchaineCase[1]]='.';

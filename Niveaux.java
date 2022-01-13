@@ -49,23 +49,41 @@ public class Niveaux {
             {'.','.','.','.','.','M','.','.','.','.'},
             {'.','.','.','.','.','M','.','.','.','.'}
     } ;
-    final static char[][] niveau5 ={
+    final static char[][] niveau5 = {
+            {'.','.','.','.','.','M','.','.','.','.'},
+            {'.','.','.','.','.','M','.','.','.','.'},
+            {'.','M','.','.','G','M','.','.','.','.'},
+            {'.','.','.','.','M','M','.','.','.','.'},
+            {'.','.','.','V','M','.','.','.','.','P'},
+            {'.','.','.','.','.','M','.','.','.','.'},
+            {'.','.','.','.','.','M','.','.','.','.'},
+            {'.','.','.','.','M','M','.','.','.','.'},
+            {'.','.','.','.','.','M','.','.','.','.'},
+            {'.','.','.','.','.','M','.','.','.','.'}
+    } ;
+    final static char[][] niveau6 ={
             {'.','.','.','.','.','.','.','.','.','.'},
             {'.','.','.','.','.','.','.','.','.','.'},
             {'.','.','.','.','.','.','.','.','.','.'},
             {'.','.','.','.','.','.','.','.','.','.'},
-            {'.','.','M','.','.','.','.','.','^','.'},
+            {'.','.','M','.','.','.','.','.','.','.'},
             {'.','.','.','R','^','R','.','M','^','M'},
             {'.','M','.','^','M','V','M','M','^','M'},
-            {'.','M','^','M','M','M','M','.','^','.'},
+            {'.','M','^','M','M','M','M','.','.','.'},
             {'M','.','.','R','.','.','.','.','.','.'},
             {'.','M','.','M','.','P','.','.','.','.'}
     } ;
 
-    public static int MiseEnPlaceNiveau(char[][] copieNiveau, int numNiveau, int[] coordonnees){
+    public static boolean PresenceGarde(int numNiveau){
+        return (numNiveau == 1);
+    }
+
+
+
+    public static int MiseEnPlaceNiveau(char[][] copieNiveau, int numNiveau, int[] coordonnees, int[] garde){
         int tours = 0;
         switch (numNiveau) {
-            case 1 :
+            case 5 :
                 for (int ligne = 0; ligne < niveau1.length; ligne++) {
                     System.arraycopy(niveau1[ligne], 0, copieNiveau[ligne], 0, niveau1[ligne].length);
                 }
@@ -98,9 +116,21 @@ public class Niveaux {
                 coordonnees[1] = 9;
                 tours = 11;
                 break;
-            case 5 :
+            case 1 :
                 for (int ligne = 0; ligne < niveau5.length; ligne++) {
                     System.arraycopy(niveau5[ligne], 0, copieNiveau[ligne], 0, niveau5[ligne].length);
+                }
+                coordonnees[0] = 4;
+                coordonnees[1] = 9;
+                garde[0]=2;
+                garde[1]=4;
+                garde[2]=1;
+                garde[3]=0;
+                tours = 16;
+                break;
+            case 6 :
+                for (int ligne = 0; ligne < niveau6.length; ligne++) {
+                    System.arraycopy(niveau6[ligne], 0, copieNiveau[ligne], 0, niveau6[ligne].length);
                 }
                 coordonnees[0] = 9;
                 coordonnees[1] = 5;
