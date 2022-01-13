@@ -240,27 +240,30 @@ public class TestMethodes {
         };
         int[] resultCoordonneesTest4 = {2,1};
 
-
+        int[] ProchaineCaseGauche = {1,0};
+        int[] ProchaineCaseDroite = {1,2};
+        int[] ProchaineCaseBas = {2,1};
+        int[] ProchaineCaseHaut = {0,1};
         //test mouvement vers la gauche
-        MethodePrincipale.Mouvement(test1,'q',coordonneesTest1);
+        MethodePrincipale.Mouvement(test1,coordonneesTest1,ProchaineCaseGauche);
 
         assertArrayEquals(resultCoordonneesTest1,coordonneesTest1);
         assertArrayEquals(resultTest1,test1);
 
         //test mouvement vers la droite
-        MethodePrincipale.Mouvement(test2,'d',coordonneesTest2);
+        MethodePrincipale.Mouvement(test2,coordonneesTest2,ProchaineCaseDroite);
 
         assertArrayEquals(resultCoordonneesTest2,coordonneesTest2);
         assertArrayEquals(resultTest2,test2);
 
         //test mouvement vers le haut
-        MethodePrincipale.Mouvement(test3,'z',coordonneesTest3);
+        MethodePrincipale.Mouvement(test3,coordonneesTest3,ProchaineCaseHaut);
 
         assertArrayEquals(resultCoordonneesTest3,coordonneesTest3);
         assertArrayEquals(resultTest3,test3);
 
         //test mouvement vers le bas
-        MethodePrincipale.Mouvement(test4,'s',coordonneesTest4);
+        MethodePrincipale.Mouvement(test4,coordonneesTest4,ProchaineCaseBas);
 
         assertArrayEquals(resultCoordonneesTest4,coordonneesTest4);
         assertArrayEquals(resultTest4,test4);

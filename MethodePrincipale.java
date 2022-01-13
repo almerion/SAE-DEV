@@ -58,34 +58,19 @@ public class MethodePrincipale {
 
         return PresenceRocherNonDeplacable;
     }
-    public static void Mouvement(char [] [] niveau , char direction, int[] coordonneesJoueur){
-        if(direction == 'q'){
-            niveau[coordonneesJoueur[0]][coordonneesJoueur[1] -1] = 'P';
-            niveau[coordonneesJoueur[0]][coordonneesJoueur[1]] = '.';
-            coordonneesJoueur[1] -=1;
-        }
-        else if(direction == 'z'){
-            niveau[coordonneesJoueur[0]-1][coordonneesJoueur[1]] = 'P';
-            niveau[coordonneesJoueur[0]][coordonneesJoueur[1]] = '.';
-            coordonneesJoueur[0] -=1;
-        }
-        else if (direction == 'd'){
-            niveau[coordonneesJoueur[0]][coordonneesJoueur[1]+1] = 'P';
-            niveau[coordonneesJoueur[0]][coordonneesJoueur[1]] = '.';
-            coordonneesJoueur[1] +=1;
-        }
-        else{
-            niveau[coordonneesJoueur[0]+1][coordonneesJoueur[1]] = 'P';
-            niveau[coordonneesJoueur[0]][coordonneesJoueur[1]] = '.';
-            coordonneesJoueur[0] +=1;
-        }
+    public static void Mouvement(char [] [] niveau, int[] coordonneesJoueur,int[] ProchaineCase){
+        niveau[ProchaineCase[0]][ProchaineCase[1]] = 'P';
+        niveau[coordonneesJoueur[0]][coordonneesJoueur[1]] = '.';
+        coordonneesJoueur[0] = ProchaineCase[0];
+        coordonneesJoueur[1] = ProchaineCase[1];
+
     }
 
     public static boolean DeplacementGarde(char[][]niveau, int[] garde){//on aurait pu utiliser prochaine case mais pas fait pcq non
         int[] prochaineCase=new int[2];
         prochaineCase[0]=garde[0]+garde[2];
         prochaineCase[1]=garde[1]+garde[3];
-        if(PresenceMurOuBordure(niveau,prochaineCase) || niveau[prochaineCase[0]][prochaineCase[1]]=='^'){
+        if(PresenceMurOuBordure(niveau,prochaineCase) || niveau[prochaineCase[0]][prochaineCase[1]] == '^' || niveau[prochaineCase[0]][prochaineCase[1]]=='R'){
             if(garde[2]==-1)
                 garde[2]=1;
             else if(garde[3]==-1)

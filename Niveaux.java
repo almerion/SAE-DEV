@@ -137,8 +137,8 @@ public class Niveaux {
                 tours = 18;
                 break;
             default:
-                System.out.println("Bruh erreur zeubi le swich il a le sida ");
-                return -1;
+                System.out.println("Ne devrait pas être là ");
+                break;
         }
         return tours;
     }
