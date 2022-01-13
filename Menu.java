@@ -37,14 +37,24 @@ public class Menu {
                         MethodePrincipale.afficherTableau(niveau);
                     }
                     //TODO : passer direction en simple char je pense (sera plus simple + pas d'erreur quand il est vide)
-                    direction = Character.toLowerCase(sc.nextLine().charAt(0));
+                    String input;
+                    input= sc.nextLine();
+                    if(input.length()!=0)
+                        direction = Character.toLowerCase(input.charAt(0));
+                    else{
+                        direction = 'm';
+                    }
                     System.out.println();
 
-                    while (direction != 'z' && direction != 'q' && direction != 's' && direction != 'd' && direction != QUITTER) {
+                    while (input.length()==0 && direction != 'z' && direction != 'q' && direction != 's' && direction != 'd' && direction != QUITTER) {
 
                         System.out.println("\u001B[31mMauvaise commande choisie, il faut tapez z pour monter, q pour aller à gauche, s pour descendre, d pour aller à droite \u001B[0m");
-
-                        direction = Character.toLowerCase(sc.nextLine().charAt(0));
+                        input= sc.nextLine();
+                        if(input.length()!=0)
+                            direction = Character.toLowerCase(input.charAt(0));
+                        else {
+                            direction='m';
+                        }
 
                     }
                     MethodePrincipale.CalculProchaineCase(direction,ProchaineCase);
@@ -91,12 +101,14 @@ public class Menu {
                 }
 
                 if(Niveaux.PresenceGarde(numNiveau)){
-                    MethodePrincipale.DeplacementGarde(niveau,garde);
+                    perdre=MethodePrincipale.DeplacementGarde(niveau,garde);
                 }
+
 
                 tours --;
             }
             System.out.println("\u001B[34mBienvenue au niveau " + numNiveau + "\u001B[0m");
+            perdre=false;
 
 
         }

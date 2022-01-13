@@ -376,8 +376,163 @@ public class TestMethodes {
         MethodePrincipale.CalculProchaineCase('z',tests);
         assertArrayEquals(resultTest4,tests);
     }
+    @Test
+    public void TestDeplacementGarde() {
+        char [][] test = {
+                {'.','.','.','.','.'},
+                {'.','.','.','.','.'},
+                {'.','.','G','.','.'},
+                {'.','.','.','.','.'},
+                {'.','.','.','.','.'}
+        };
+        int[] coordonneesGarde= {2,2};
+        int[] coordonneesTest= {2,2};
+        int[] directionTest1={0,1};
+        int[] directionTest2={1,0};
+        int[] directionTest3={0,-1};
+        int[] directionTest4={-1,0};
+        int compteur=0;
+
+        char [][] resultTest1 = {
+                {'.','.','.','.','.'},
+                {'.','.','.','.','.'},
+                {'.','.','.','G','.'},
+                {'.','.','.','.','.'},
+                {'.','.','.','.','.'}
+        };
+
+        char [][] resultTest2 = {
+                {'.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.'},
+                {'.', '.', 'G', '.', '.'},
+                {'.', '.', '.', '.', '.'}
+
+        };
+
+
+        char [][] resultTest3 = {
+                {'.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.'},
+                {'.', 'G', '.', '.', '.'},
+                {'.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.'}
+        };
+
+        char [][] resultTest4 = {
+                {'.', '.', '.', '.', '.'},
+                {'.', '.', 'G', '.', '.'},
+                {'.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.'}
+        };
 
 
 
 
+
+        char [][] resultTest5 = {
+                {'.','.','.','.','.'},
+                {'.','.','.','.','.'},
+                {'.','.','.','.','G'},
+                {'.','.','.','.','.'},
+                {'.','.','.','.','.'}
+        };
+
+
+        char [][] resultTest6 = {
+                {'.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.'},
+                {'.', '.', 'G', '.', '.'}
+
+        };
+
+
+        char [][] resultTest7 = {
+                {'.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.'},
+                {'G', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.'}
+        };
+
+
+        char [][] resultTest8_9 = {
+                {'.', '.', 'G', '.', '.'},
+                {'.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.'},
+                {'.', '.', '.', '.', '.'}
+        };
+
+
+
+
+
+
+        //Test mouvement garde vers la droite de 1
+        testMouvementGarde(test,coordonneesTest,directionTest1,resultTest1,coordonneesGarde,1);
+
+        //Test mouvement garde vers le bas de 1
+        testMouvementGarde(test,coordonneesTest,directionTest2,resultTest2,coordonneesGarde,1);
+
+
+        //Test mouvement garde vers la gauche de 1
+        testMouvementGarde(test,coordonneesTest,directionTest3,resultTest3,coordonneesGarde,1);
+
+
+        //Test mouvement garde vers le haut de 1
+        testMouvementGarde(test,coordonneesTest,directionTest4,resultTest4,coordonneesGarde,1);
+
+
+
+
+
+
+        //Test mouvement garde vers la droite de 2
+        testMouvementGarde(test,coordonneesTest,directionTest1,resultTest5,coordonneesGarde,2);
+
+        //Test mouvement garde vers le bas de 2
+        testMouvementGarde(test,coordonneesTest,directionTest2,resultTest6,coordonneesGarde,2);
+
+
+        //Test mouvement garde vers la gauche de 2
+        testMouvementGarde(test,coordonneesTest,directionTest3,resultTest7,coordonneesGarde,2);
+
+
+        //Test mouvement garde vers le haut de 2
+        testMouvementGarde(test,coordonneesTest,directionTest4,resultTest8_9,coordonneesGarde,2);
+
+        //Test mouvement garde vers le haut de 2
+        //testMouvementGarde(test,coordonneesTest,directionTest4,resultTest8_9,coordonneesGarde,3);
+/*
+        //Test mouvement garde vers le haut de 3. On s'attends à ce qu'il s'arrête devant la bordure du niveau
+        while(compteur<3) {
+            MethodePrincipale.DeplacementGarde(test, coordonneesTest, directionTest4);
+            compteur++;
+        }
+
+        assertArrayEquals(resultTest8_9,test);
+        coordonneesTest[0]=coordonneesGarde[0];
+        coordonneesTest[1]=coordonneesGarde[1];
+        test[coordonneesTest[0]+(directionTest4[0]*compteur)][coordonneesTest[1]+(directionTest4[1]*compteur)] = '.';
+        test[coordonneesGarde[0]][coordonneesGarde[1]] = 'G';
+        compteur=0;
+*/
+
+    }
+
+    public static void testMouvementGarde(char[][] tableauTest, int[] coordonneesTest, int[] directionTest, char[][] resultTest,int[] coordonneesGarde, int mouvement) {
+        int i;
+        for(i = 0; i < mouvement; i++){
+            MethodePrincipale.DeplacementGarde(tableauTest, coordonneesTest, directionTest);
+        }
+        assertArrayEquals(resultTest, tableauTest);
+        coordonneesTest[0] = coordonneesGarde[0];
+        coordonneesTest[1] = coordonneesGarde[1];
+        tableauTest[coordonneesTest[0] + (directionTest[0] * i)][coordonneesTest[1] + (directionTest[1] * i)] = '.';
+        tableauTest[coordonneesGarde[0]][coordonneesGarde[1]] = 'G';
+    }
 }

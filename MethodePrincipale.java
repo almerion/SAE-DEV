@@ -85,7 +85,7 @@ public class MethodePrincipale {
         int[] prochaineCase=new int[2];
         prochaineCase[0]=garde[0]+garde[2];
         prochaineCase[1]=garde[1]+garde[3];
-        if(PresenceMurOuBordure(niveau,prochaineCase)){
+        if(PresenceMurOuBordure(niveau,prochaineCase) || niveau[prochaineCase[0]][prochaineCase[1]]=='^'){
             if(garde[2]==-1)
                 garde[2]=1;
             else if(garde[3]==-1)
@@ -98,14 +98,16 @@ public class MethodePrincipale {
         }
 
         else {
+            if(niveau[prochaineCase[0]][prochaineCase[1]]=='P') {
+                return true;
+            }
             niveau[prochaineCase[0]][prochaineCase[1]] = 'G';
             niveau[garde[0]][garde[1]] = '.';
             garde[0] += garde[2];
             garde[1] += garde[3];
+
         }
-        if(niveau[prochaineCase[0]][prochaineCase[1]]=='P') {
-            return true;
-        }
+
         return false;
     }
 
@@ -133,6 +135,37 @@ public class MethodePrincipale {
             ProchaineCase[0] += 1;
 
     }
+  public static boolean DeplacementGarde(char[][]niveau, int[] coordonnee,int[] direction){
+        int[] prochaineCase=new int[2];
+        prochaineCase[0]=coordonnee[0]+direction[0];
+        prochaineCase[1]=coordonnee[1]+direction[1];
+        if(PresenceMurOuBordure(niveau,prochaineCase) || niveau[prochaineCase[0]][prochaineCase[1]]=='^'){
+            if(direction[0]==-1)
+                direction[0]=1;
+            else if(direction[1]==-1)
+                direction[1]=1;
+            else if(direction[0]==1)
+                direction[0]=-1;
+            else if(direction[1]==1)
+                direction[1]=-1;
+
+        }
+
+        else {
+            if(niveau[prochaineCase[0]][prochaineCase[1]]=='P') {
+                return true;
+            }
+            niveau[prochaineCase[0]][prochaineCase[1]] = 'G';
+            niveau[coordonnee[0]][coordonnee[1]] = '.';
+            coordonnee[0] += direction[0];
+            coordonnee[1] += direction[1];
+
+        }
+
+        return false;
+    }
+
 
 
 }
+
